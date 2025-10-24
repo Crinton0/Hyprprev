@@ -1,0 +1,1 @@
+# Hyprprev - Hyprpaper preview utility

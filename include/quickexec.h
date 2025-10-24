@@ -1,0 +1,1 @@
+int quickexec(const char* command);
