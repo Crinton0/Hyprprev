@@ -7,7 +7,6 @@ set(SOURCE_FILES
     main.c # main C file
     src/messages.c
     src/options_args.c
-    src/use_clipboard.c 
     src/use_file.c
     src/quickexec.c
     

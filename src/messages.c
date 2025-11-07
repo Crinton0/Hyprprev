@@ -5,7 +5,7 @@
 
 void write_help_message()
 {
-    char* help_message = "Welcome to Hyprpaper Preview Utility!\n\nUsage: hyprprev [args] \"path/to/image\"\n\nArguments:\n-h      | Show this message\n-c      | Use the image in the clipboard(requires wl-clipboard)\n-t      | Specify a duration\n";
+    char* help_message = "Welcome to Hyprpaper Preview Utility!\n\nUsage: hyprprev [args] \"path/to/image\"\n\nArguments:\n-h      | Show this message\n-t      | Specify a duration\n-q      | Quiet mode (no output or notification)\n";
     write(STDOUT_FILENO, help_message, strlen(help_message));
 }
 

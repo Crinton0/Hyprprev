@@ -86,7 +86,7 @@ int create_preview_config(char* file_path, int file_length, char* new_config_pat
     return 0;
 }
 
-int run_hyprpaper(char* config_path, int duration_s)
+int run_hyprpaper(char* config_path, int duration_s, int is_quiet)
 {
     char cmd_buf[256] = {0};
     snprintf(cmd_buf, sizeof(cmd_buf), "hyprpaper -c %s", config_path);
@@ -95,9 +95,14 @@ int run_hyprpaper(char* config_path, int duration_s)
 
 
 
+    
+    quickexec(cmd_buf);
     pid_t pid = fork();
     if (pid == 0) {
-        quickexec(cmd_buf);
+        int devnull = open("/dev/null", O_WRONLY);
+        dup2(devnull, STDOUT_FILENO);
+        dup2(devnull, STDERR_FILENO);
+        close(devnull);
         execlp("hyprpaper", "hyprpaper", "-c", config_path, (char *)NULL);
         _exit(1);
     } else if (pid > 0 && duration_s == -1){
@@ -139,7 +144,7 @@ int file_handler(char* file_path){
 
 
     create_preview_config(file_path, strlen(file_path), default_config_path, 1);
-    run_hyprpaper(default_config_path, 5);
+    run_hyprpaper(default_config_path, 5, 1);
     
     return 0;
 

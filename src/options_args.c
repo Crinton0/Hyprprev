@@ -36,9 +36,6 @@ int process_opt_args(int argc, char** argv){
             case 'h':
                 write_help_message();
                 return 0;
-            case 'c':
-                clipboard_handler();
-                return 0;
             case 't':
                 write(STDOUT_FILENO, "Time", strlen("Time"));
                 return 0;
